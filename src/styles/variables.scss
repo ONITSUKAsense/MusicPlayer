@@ -1,0 +1,51 @@
+// Colors
+$primary: #6366f1;
+$primary-light: #818cf8;
+$primary-dark: #4f46e5;
+
+$bg-dark: #0a0a0a;
+$bg-surface: #141414;
+$bg-card: #1a1a1a;
+$bg-border: #2a2a2a;
+
+$text-primary: #e5e5e5;
+$text-secondary: #a3a3a3;
+$text-muted: #6b7280;
+
+$gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+$gradient-accent: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+$gradient-cool: linear-gradient(135deg, #06b6d4 0%, #6366f1 100%);
+
+// Glass
+$glass-light: rgba(255, 255, 255, 0.08);
+$glass-medium: rgba(255, 255, 255, 0.12);
+$glass-heavy: rgba(255, 255, 255, 0.16);
+
+// Shadows
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+$shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+$shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.6);
+$shadow-glow: 0 0 30px rgba(99, 102, 241, 0.15);
+
+// Radius
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius-full: 9999px;
+
+// Player
+$player-height: 80px;
+
+// Sidebar
+$sidebar-width: 240px;
+$sidebar-collapsed-width: 64px;
+
+// Navbar
+$navbar-height: 60px;
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
