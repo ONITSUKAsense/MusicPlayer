@@ -10,7 +10,6 @@ function createWindow() {
     minWidth: 900,
     minHeight: 600,
     title: 'Music Player',
-    icon: path.join(__dirname, '../public/favicon.svg'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
       contextIsolation: true,
@@ -24,7 +23,7 @@ function createWindow() {
     win.loadURL('http://localhost:5173')
     win.webContents.openDevTools()
   } else {
-    win.loadFile(path.join(__dirname, '../dist/index.html'))
+    win.loadFile(path.join(__dirname, '../index.html'))
   }
 
   win.once('ready-to-show', () => {
