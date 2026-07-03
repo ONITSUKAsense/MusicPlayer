@@ -30,6 +30,12 @@
 | **Electron Builder** | 应用打包 |
 | **Iconify** (Carbon) | 图标库 |
 
+## 页面展示
+<img width="1912" height="922" alt="image" src="https://github.com/user-attachments/assets/d94b63f2-fa2e-458a-960b-70a1b3a82302" />
+<img width="1904" height="907" alt="image" src="https://github.com/user-attachments/assets/b38f0382-f084-4d57-9578-3bbc8322f3a9" />
+<img width="1906" height="989" alt="image" src="https://github.com/user-attachments/assets/10cd936c-cabf-4c23-91a6-e9f5331602f4" />
+
+
 ## 架构设计
 
 ### 数据流
