@@ -11,30 +11,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    Avatar: typeof import('./../components/common/Avatar.vue')['default']
-    Comment: typeof import('./../components/common/Comment.vue')['default']
-    Drawer: typeof import('./../components/common/Drawer.vue')['default']
-    ElButton: typeof import('element-plus/es')['ElButton']
-    ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
-    ElForm: typeof import('element-plus/es')['ElForm']
-    ElFormItem: typeof import('element-plus/es')['ElFormItem']
-    ElInput: typeof import('element-plus/es')['ElInput']
-    ElOption: typeof import('element-plus/es')['ElOption']
-    ElSelect: typeof import('element-plus/es')['ElSelect']
-    ElSwitch: typeof import('element-plus/es')['ElSwitch']
     Empty: typeof import('./../components/common/Empty.vue')['default']
     Loading: typeof import('./../components/common/Loading.vue')['default']
     LyricDisplay: typeof import('./../components/player/LyricDisplay.vue')['default']
-    Modal: typeof import('./../components/common/Modal.vue')['default']
-    MusicCard: typeof import('./../components/common/MusicCard.vue')['default']
     Navbar: typeof import('./../components/layout/Navbar.vue')['default']
     PlayerBar: typeof import('./../components/player/PlayerBar.vue')['default']
-    ProgressBar: typeof import('./../components/player/ProgressBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    ScrollToTop: typeof import('./../components/common/ScrollToTop.vue')['default']
     Sidebar: typeof import('./../components/layout/Sidebar.vue')['default']
     Skeleton: typeof import('./../components/common/Skeleton.vue')['default']
-    SongItem: typeof import('./../components/common/SongItem.vue')['default']
   }
 }

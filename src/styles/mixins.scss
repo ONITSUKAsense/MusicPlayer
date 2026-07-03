@@ -1,7 +1,7 @@
 @use './variables' as *;
 
-// Glassmorphism mixins
-@mixin glass($opacity: 0.08, $blur: 20px) {
+// === Glassmorphism ===
+@mixin glass($opacity: 0.04, $blur: 20px) {
   background: rgba(255, 255, 255, $opacity);
   backdrop-filter: blur($blur);
   -webkit-backdrop-filter: blur($blur);
@@ -9,31 +9,99 @@
 }
 
 @mixin glass-light {
-  @include glass(0.05, 10px);
+  @include glass(0.03, 10px);
 }
 
 @mixin glass-medium {
-  @include glass(0.08, 16px);
+  @include glass(0.06, 16px);
 }
 
 @mixin glass-heavy {
-  @include glass(0.12, 24px);
+  @include glass(0.1, 24px);
+}
+
+// === Premium Card ===
+@mixin premium-card {
+  background: $bg-card;
+  border: 1px solid $bg-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-sm;
+  transition: all $transition-normal;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
 }
 
 @mixin glass-card {
-  @include glass(0.06, 12px);
+  @include glass(0.05, 12px);
   border-radius: $radius-lg;
   box-shadow: $shadow-md;
   transition: all $transition-normal;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     box-shadow: $shadow-lg;
     transform: translateY(-2px);
   }
 }
 
-// Text truncation
+// === Hover Effects ===
+@mixin hover-lift($amount: -2px) {
+  transition: all $transition-normal;
+
+  &:hover {
+    transform: translateY($amount);
+  }
+}
+
+@mixin hover-scale($scale: 1.04) {
+  transition: transform $transition-normal;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+// === Button Base ===
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-fast;
+  border-radius: $radius-md;
+  font-weight: 500;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+@mixin btn-primary {
+  @include btn-base;
+  background: $gradient-primary;
+  color: white;
+  border-radius: $radius-full;
+  padding: 10px 24px;
+  font-size: 14px;
+  box-shadow: 0 4px 15px $primary-glow;
+
+  &:hover:not(:disabled) {
+    box-shadow: 0 6px 25px $primary-glow;
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+// === Typography ===
 @mixin text-ellipsis($lines: 1) {
   @if $lines == 1 {
     overflow: hidden;
@@ -47,7 +115,14 @@
   }
 }
 
-// Flex center
+@mixin gradient-text($gradient: $gradient-primary) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// === Layout ===
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -60,10 +135,11 @@
   justify-content: space-between;
 }
 
-// Scrollbar
+// === Scrollbar ===
 @mixin custom-scrollbar($width: 6px) {
   &::-webkit-scrollbar {
     width: $width;
+    height: $width;
   }
 
   &::-webkit-scrollbar-track {
@@ -71,65 +147,41 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: $width / 2;
 
     &:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.16);
     }
   }
 }
 
-// Skeleton loading
+// === Glow ===
+@mixin glow($color: $primary, $size: 20px) {
+  box-shadow: 0 0 $size rgba($color, 0.12);
+
+  &:hover {
+    box-shadow: 0 0 ($size * 1.5) rgba($color, 0.2);
+  }
+}
+
+// === Skeleton ===
 @mixin skeleton {
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.04) 25%,
-    rgba(255, 255, 255, 0.08) 50%,
-    rgba(255, 255, 255, 0.04) 75%
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 75%
   );
   background-size: 200% 100%;
   animation: skeleton-shimmer 1.5s ease-in-out infinite;
   border-radius: $radius-sm;
 }
 
-// Gradient text
-@mixin gradient-text($gradient: $gradient-primary) {
-  background: $gradient;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-// Hover scale
-@mixin hover-scale($scale: 1.05) {
-  transition: transform $transition-normal;
-
-  &:hover {
-    transform: scale($scale);
-  }
-}
-
-// Button base
-@mixin btn-base {
-  @include flex-center;
-  border: none;
-  cursor: pointer;
-  transition: all $transition-fast;
-  border-radius: $radius-md;
-  font-weight: 500;
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-}
-
-// Glow effect
-@mixin glow($color: $primary, $size: 20px) {
-  box-shadow: 0 0 $size rgba($color, 0.15);
-
-  &:hover {
-    box-shadow: 0 0 ($size * 1.5) rgba($color, 0.25);
+// === Focus ===
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid $primary-light;
+    outline-offset: 2px;
   }
 }

@@ -23,8 +23,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg'],
       manifest: {
-        name: 'Music Player',
-        short_name: 'Music',
+        name: 'Aurora',
+        short_name: 'Aurora',
         theme_color: '#0a0a0a',
         icons: [
           { src: '/pwa-192x192.png', sizes: '192x192', type: 'image/png' },

@@ -1,23 +1,22 @@
 <template>
   <div class="layout">
+    <!-- Ambient background glow -->
+    <div class="ambient-bg" aria-hidden="true" />
+
     <!-- Mobile overlay -->
     <Transition name="fade">
       <div v-if="uiStore.sidebarOpen && isMobile" class="mobile-overlay" aria-hidden="true" @click="uiStore.closeSidebar()" />
     </Transition>
 
     <Sidebar />
-    <div class="layout-main" :class="{ 'sidebar-open': uiStore.sidebarOpen }" id="main-content">
+    <div class="layout-main" id="main-content">
       <Navbar />
       <main class="layout-content" ref="contentRef" role="main">
-        <transition
-          mode="out-in"
-          @enter="pageEnter"
-          @leave="pageLeave"
-        >
-          <keep-alive :include="cachedViews">
+        <router-view v-slot="{ Component, route }">
+          <transition mode="out-in" @enter="pageEnter" @leave="pageLeave">
             <component :is="Component" :key="route.path" />
-          </keep-alive>
-        </transition>
+          </transition>
+        </router-view>
       </main>
     </div>
     <PlayerBar />
@@ -38,16 +37,10 @@ const route = useRoute()
 const uiStore = useUiStore()
 const { isMobile } = useResponsive()
 
-const cachedViews = computed(() => {
-  const views: string[] = []
-  if (route.meta.cache) views.push(route.name as string)
-  return views
-})
-
 function pageEnter(el: Element, done: () => void) {
   gsap.fromTo(
     el, { opacity: 0, y: 20 },
-    { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out', onComplete: done }
+    { opacity: 1, y: 0, duration: 0.4, ease: 'power3.out', onComplete: done }
   )
 }
 
@@ -64,12 +57,13 @@ function pageLeave(el: Element, done: () => void) {
   height: 100vh;
   background: $bg-dark;
   overflow: hidden;
+  position: relative;
 }
 
 .mobile-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   z-index: 90;
 }
@@ -80,6 +74,8 @@ function pageLeave(el: Element, done: () => void) {
   flex-direction: column;
   margin-left: $sidebar-width;
   overflow: hidden;
+  position: relative;
+  z-index: 1;
   transition: margin-left 0.3s ease;
 
   @include mobile {
@@ -90,9 +86,11 @@ function pageLeave(el: Element, done: () => void) {
 .layout-content {
   flex: 1;
   overflow-y: auto;
-  padding: 24px;
-  padding-bottom: calc($player-height + 24px);
+  padding: 28px;
+  padding-bottom: calc($player-height + 28px);
   @include custom-scrollbar;
+  position: relative;
+  z-index: 1;
 
   @include mobile {
     padding: 16px;

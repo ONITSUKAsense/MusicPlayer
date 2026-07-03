@@ -26,5 +26,4 @@ export interface RegisterParams {
 
 export interface LoginResult {
   token: string
-  user: import('./music').User
 }

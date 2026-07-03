@@ -1,42 +1,44 @@
-// Glassmorphism utility classes
+// === Glassmorphism Utility Classes ===
+
 .glass {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .glass-light {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .glass-heavy {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-  transition: all 0.3s ease;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
   }
 }
 
-// Background glow effects
+// === Background Glow Effects ===
+
 .bg-glow {
   position: relative;
 
@@ -46,9 +48,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
   }
@@ -56,6 +58,6 @@
 
 .bg-glow-accent {
   &::before {
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
   }
 }
